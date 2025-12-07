@@ -27,7 +27,7 @@
             <a class="header__nav-link" href="watchlist.html">My Watchlist</a>
           </nav>
         </div>
-        <form class="header__form">
+        <form class="header__form" id="search-form">
           <h2 class="sr-only">Search</h2>
           <img
             class="header__form-icon"
@@ -54,7 +54,7 @@
       <section class="films-section">
         <div class="films-section__inner container">
           <h2 class="sr-only">Search Results</h2>
-          <div class="films-section__msg-area">
+          <div class="films-section__msg-area" id="msg-area">
             <h3 class="films-section__msg-title">Start exploring</h3>
             <img
               class="films-section__msg-icon"
@@ -63,57 +63,10 @@
               aria-hidden="true"
             />
           </div>
-          <ul class="films-section__list">
-            <li class="search-results__item">
-              <article class="movie-card movie-card--btm-border">
-                <div class="movie-card__content">
-                  <header class="movie-card__head">
-                    <h3 class="movie-card__title">Blade Runner</h3>
-                    <img
-                      class="movie-card__star"
-                      src="img/star-icon.png"
-                      alt=""
-                      aria-hidden="true"
-                    />
-                    <span class="movie-card__rating" aria-label="rating"
-                      >8.1</span
-                    >
-                  </header>
-                  <div class="movie-card__details">
-                    <span class="movie-card__length">116 min</span>
-                    <span class="movie-card__categories"
-                      >Drama, Mystery, Sci-Fi</span
-                    >
-                    <button
-                      aria-label="Add to watchlist"
-                      class="movie-card__add-to-watchlist"
-                    >
-                      <img
-                        class="movie-card__add-to-watchlist-icon"
-                        src="img/add-to-watchlist.png"
-                        alt=""
-                        aria-hidden="true"
-                      />
-                      Watchlist
-                    </button>
-                  </div>
-                  <p class="movie-card__description">
-                    A blade runner must pursue and terminate four replicants who
-                    stole a ship in space, and have returned to Earth to find
-                    their creator.
-                  </p>
-                </div>
-                <img
-                  class="movie-card__image"
-                  src="img/blade-runner.png"
-                  alt=""
-                  aria-hidden="true"
-                />
-              </article>
-            </li>
-          </ul>
+          <ul class="films-section__list" id="movie-list"></ul>
         </div>
       </section>
     </main>
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>
