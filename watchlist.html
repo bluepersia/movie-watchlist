@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Watchlist</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/shared/header.css" />
+    <link rel="stylesheet" href="css/shared/films-section.css" />
+    <link rel="stylesheet" href="css/shared/movie-card.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__inner container">
+        <div class="header__content">
+          <h1 class="header__title">My Watchlist</h1>
+          <nav class="header__nav">
+            <a class="header__nav-link" href="index.html">Search for movies </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="films-section">
+        <div class="films-section__inner container">
+          <h2 class="sr-only">Your Watchlist</h2>
+          <div
+            class="films-section__msg-area films-section__watchlist-msg-area"
+            id="msg-area"
+          >
+            <h3 class="films-section__msg-title">
+              Your watchlist is looking a little empty...
+            </h3>
+            <a href="index.html" class="films-section__msg-add">
+              <img
+                src="/img/add-to-watchlist.png"
+                alt=""
+                class="films-section__msg-add-icon"
+                aria-hidden="true"
+              />Let's add some movies!
+            </a>
+          </div>
+          <ul class="films-section__list" id="movie-list"></ul>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>

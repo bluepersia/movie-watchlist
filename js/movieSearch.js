@@ -3,6 +3,7 @@ import {
   fetchMovie,
   init as initMovieList,
 } from "./movieList.js";
+import { getMoviesIDs } from "./watchlist.js";
 
 function init() {
   initMovieList();
@@ -19,7 +20,9 @@ function init() {
 
 async function handleSearch(searchQuery) {
   const movies = await fetchMovies(searchQuery);
-  displayMovies(movies);
+  displayMovies(movies, {
+    moviesIDs: getMoviesIDs(),
+  });
 }
 
 async function fetchMovies(searchQuery) {

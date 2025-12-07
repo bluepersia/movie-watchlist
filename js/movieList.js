@@ -1,10 +1,14 @@
-import { addToWatchlist } from "./watchlist.js";
+import {
+  addToWatchlist,
+  getMoviesIDs,
+  removeFromWatchlist,
+} from "./watchlist.js";
 
-function generateMovieHTML(movie, isWatchlist = false) {
+function generateMovieHTML(movie, opts) {
   return `
-   <article class="movie-card movie-card--btm-border" data-imdb-ID="${
-     movie.imdbID
-   }">
+   <article class="movie-card ${
+     !opts.isLast ? "movie-card--btm-border" : ""
+   }" data-imdb-ID="${movie.imdbID}">
                 <div class="movie-card__content">
                   <header class="movie-card__head">
                     <h3 class="movie-card__title">${movie.Title}</h3>
@@ -24,7 +28,7 @@ function generateMovieHTML(movie, isWatchlist = false) {
                       >${movie.Genre}</span
                     >
                     ${
-                      !isWatchlist
+                      !opts.moviesIDs.includes(movie.imdbID)
                         ? `
                     <button
                       aria-label="Add to watchlist"
@@ -43,6 +47,7 @@ function generateMovieHTML(movie, isWatchlist = false) {
                 <button
                       aria-label="Remove from watchlist"
                       class="movie-card__remove-from-watchlist"
+                      data-remove-from-watchlist="true"
                     >
                       <img
                         class="movie-remove-from-watchlist-icon"
@@ -50,7 +55,7 @@ function generateMovieHTML(movie, isWatchlist = false) {
                         alt=""
                         aria-hidden="true"
                       />
-                      Watchlist
+                      Remove
                     </button>`
                     }
                   </div>
@@ -71,11 +76,20 @@ function generateMovieHTML(movie, isWatchlist = false) {
 const movieList = document.getElementById("movie-list");
 const msgArea = document.getElementById("msg-area");
 
-function init() {
+function init(isWatchlist = false) {
   movieList.addEventListener("click", (e) => {
     if (e.target.dataset.addToWatchlist) {
       const closestMovieEl = e.target.closest("[data-imdb-ID]");
       addToWatchlist(closestMovieEl.dataset.imdbId);
+      displayMovies(moviesDisplaying, {
+        moviesIDs: getMoviesIDs(),
+      });
+    } else if (e.target.dataset.removeFromWatchlist) {
+      const closestMovieEl = e.target.closest("[data-imdb-ID]");
+      removeFromWatchlist(closestMovieEl.dataset.imdbId, isWatchlist);
+      displayMovies(moviesDisplaying, {
+        moviesIDs: getMoviesIDs(),
+      });
     }
   });
 }
@@ -87,22 +101,35 @@ async function fetchMovie(imdbID) {
   return movieData;
 }
 
-function displayMovies(movies) {
+let moviesDisplaying = [];
+
+function displayMovies(movies, opts) {
   if (movies.length) {
     msgArea.style.display = "none";
     movieList.innerHTML = "";
 
-    movies.forEach((movie) => {
-      const movieHTML = generateMovieHTML(movie);
+    movies.forEach((movie, index) => {
+      const movieHTML = generateMovieHTML(movie, {
+        isLast: index >= movies.length - 1,
+        ...opts,
+      });
       const liEl = document.createElement("li");
       liEl.classList.add("films-section__list-item");
       liEl.innerHTML = movieHTML;
       movieList.appendChild(liEl);
     });
-  } else {
+  } else if (!opts.isWatchlist) {
     msgArea.style.display = "block";
     msgArea.innerHTML = `
             <h3 class="films-section__msg-title">Unable to find what you’re looking for. Please try another search.</h3>`;
   }
+
+  moviesDisplaying = movies;
 }
-export { displayMovies, init, fetchMovie };
+
+function removeMovie(imdbID) {
+  moviesDisplaying = moviesDisplaying.filter(
+    (movie) => movie.imdbID !== imdbID
+  );
+}
+export { displayMovies, init, fetchMovie, removeMovie };
