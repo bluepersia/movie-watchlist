@@ -41,7 +41,8 @@
   margin-bottom: 0.57rem;
 }
 
-.movie-card__add-to-watchlist {
+.movie-card__add-to-watchlist,
+.movie-card__remove-from-watchlist {
   display: flex;
   align-items: center;
   gap: 0.5rem;
