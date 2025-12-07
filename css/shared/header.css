@@ -1,0 +1,78 @@
+.header {
+  background-image: url("/img/header-bg.png");
+  background-size: cover;
+  background-color: rgba(14, 14, 14, 0.8);
+  background-position-x: left;
+  background-position-y: 30%;
+  background-blend-mode: darken;
+  background-repeat: no-repeat;
+  position: relative;
+  font-size: 1rem;
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5.85rem 0;
+}
+
+.header__title {
+  font-size: 3em;
+}
+
+.header__nav-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 700;
+  transition: color 0.3s ease;
+  &:hover {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.header__form {
+  border-radius: 0.5rem;
+  background-color: rgb(47, 47, 47, 1);
+  transform: translateY(50%);
+  display: flex;
+  align-items: center;
+  min-height: 2.7rem;
+  padding: 0 0.92rem;
+  padding-right: 0;
+}
+
+.header__form-icon {
+  width: 1.42rem;
+  height: 1.42rem;
+  margin-right: 0.57rem;
+}
+
+.header__form-label {
+  display: none;
+}
+.header__form-input {
+  border: none;
+  background-color: transparent;
+  color: rgba(165, 165, 165, 1);
+  font-weight: 500;
+  width: 100%;
+  outline: none;
+}
+
+.header__form-button {
+  margin-left: auto;
+  background-color: rgba(75, 75, 75, 1);
+  border: none;
+  font-family: inherit;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 500;
+  padding: 0.64rem 1.75rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: rgba(95, 95, 95, 1);
+  }
+}

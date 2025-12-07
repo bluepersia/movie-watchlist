@@ -1,0 +1,61 @@
+.movie-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-direction: row-reverse;
+  font-size: 1em;
+  padding: 1.78rem 0;
+}
+
+.movie-card--btm-border {
+  border-bottom: 0.1rem solid rgba(46, 46, 47, 1);
+}
+
+.movie-card__image {
+  width: 7rem;
+  height: 10.5rem;
+  display: block;
+  object-fit: cover;
+}
+
+.movie-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.57rem;
+}
+
+.movie-card__title {
+  font-size: 1.28em;
+}
+
+.movie-card__rating,
+.movie-card__details {
+  font-size: 0.85rem;
+}
+
+.movie-card__details {
+  display: flex;
+  align-items: center;
+  gap: 1.28rem;
+  margin-bottom: 0.57rem;
+}
+
+.movie-card__add-to-watchlist {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  &:hover {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.movie-card__description {
+  color: rgba(165, 165, 165, 1);
+}
